@@ -10,14 +10,9 @@ namespace HubtelEcommerce.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController : ControllerBase
+    public class OrdersController(EcommerceDbContext context) : ControllerBase
     {
-        private readonly EcommerceDbContext _context;
-
-        public OrdersController(EcommerceDbContext context)
-        {
-            _context = context;
-        }
+        private readonly EcommerceDbContext _context = context;
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()

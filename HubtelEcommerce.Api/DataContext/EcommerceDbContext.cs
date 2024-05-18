@@ -5,12 +5,8 @@ using System.Reflection.Emit;
 
 namespace HubtelEcommerce.Api.DataContext
 {
-    public class EcommerceDbContext : DbContext
+    public class EcommerceDbContext(DbContextOptions<EcommerceDbContext> options) : DbContext(options)
     {
-        public EcommerceDbContext(DbContextOptions<EcommerceDbContext> options) : base(options)
-        {
-        }
-
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
